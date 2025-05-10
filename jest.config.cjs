@@ -35,6 +35,12 @@ const config = {
         '!src/modules/identity/**/*.test.{ts,tsx}',
         '!src/modules/identity/**/__tests__/**',
         '!src/modules/identity/**/__mocks__/**',
+        'src/modules/collaboration/**/*.{ts,tsx}',
+        '!src/modules/collaboration/**/*.d.ts',
+        '!src/modules/collaboration/**/*.stories.{ts,tsx}',
+        '!src/modules/collaboration/**/*.test.{ts,tsx}',
+        '!src/modules/collaboration/**/__tests__/**',
+        '!src/modules/collaboration/**/__mocks__/**',
     ],
     globals: {
         crypto: {

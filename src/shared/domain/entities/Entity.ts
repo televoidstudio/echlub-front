@@ -1,5 +1,3 @@
-import { DomainEvent } from '../events/DomainEvent';
-
 /**
  * 實體基類
  * 所有領域實體都應繼承此類
@@ -7,7 +5,6 @@ import { DomainEvent } from '../events/DomainEvent';
 export abstract class Entity {
   protected readonly _createdAt: Date;
   protected _updatedAt: Date;
-  private domainEvents: DomainEvent[] = [];
 
   constructor(createdAt: Date, updatedAt: Date) {
     this._createdAt = createdAt;
@@ -31,17 +28,5 @@ export abstract class Entity {
       return false;
     }
     return this._createdAt.getTime() === other._createdAt.getTime();
-  }
-
-  protected addDomainEvent(event: DomainEvent): void {
-    this.domainEvents.push(event);
-  }
-
-  public getDomainEvents(): DomainEvent[] {
-    return [...this.domainEvents];
-  }
-
-  public clearDomainEvents(): void {
-    this.domainEvents = [];
   }
 } 

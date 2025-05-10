@@ -1,4 +1,4 @@
-import { Entity, AggregateRoot } from '../../../../shared/domain';
+import { AggregateRoot } from '../../../../shared/domain';
 import { UserRegisteredEvent } from '../events/UserRegisteredEvent';
 import { UserLoggedInEvent } from '../events/UserLoggedInEvent';
 import { UserLoggedOutEvent } from '../events/UserLoggedOutEvent';
@@ -14,7 +14,7 @@ export interface UserProps {
   avatar?: string;
 }
 
-export class User extends Entity implements AggregateRoot {
+export class User extends AggregateRoot {
   private readonly _id: string;
   private _email: string;
   private _username: string;
@@ -102,26 +102,15 @@ export class User extends Entity implements AggregateRoot {
     this.addDomainEvent(new PasswordChangedEvent());
   }
 
-  public equals(other: Entity): boolean {
-    if (other === null || other === undefined) {
-      return false;
-    }
-    if (!(other instanceof User)) {
-      return false;
-    }
-    return this._id === (other as User).id;
-  }
-  
-  // 實現 AggregateRoot 接口
-  getVersion(): number {
+  public getVersion(): number {
     return this._version;
   }
 
-  incrementVersion(): void {
+  public incrementVersion(): void {
     this._version++;
   }
 
-  toJSON(): object {
+  public toJSON(): object {
     return {
       id: this._id,
       email: this._email,

@@ -19,5 +19,8 @@ export const TYPES = {
 
   // 客戶端
   WebSocketClient: Symbol.for('WebSocketClient'),
-  WebRTCClient: Symbol.for('WebRTCClient')
+  WebRTCClient: Symbol.for('WebRTCClient'),
+
+  // General
+  ENV_CONFIG: Symbol.for('ENV_CONFIG') // Environment configuration for adapters and services
 } as const; 
